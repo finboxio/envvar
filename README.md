@@ -1,3 +1,9 @@
+# injectenv
+
+This is simply a fork of [envvar](https://github.com/envvar) that allows
+you to inject environment overrides. Useful for testing environment-related
+behavior.
+
 # envvar
 
 envvar is a tiny JavaScript package for deriving JavaScript values from
@@ -50,3 +56,11 @@ const NODE_ENV = envvar.enum('NODE_ENV', ['development', 'staging', 'production'
 
 This states that `process.env.NODE_ENV` must either be unset (in which case the
 default value is assumed), or set to `development`, `staging`, or `production`.
+
+### `envvar(subenv, opts)`
+
+This overrides any environment variables with values defined in subenv
+
+Set `opts.merge = false` to completely overwrite all environment not defined in subenv
+
+Note that this will not override actual process environment variables, just the values returned by `envvar` functions

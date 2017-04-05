@@ -1,6 +1,6 @@
 ISTANBUL = node_modules/.bin/istanbul
 JSHINT = node_modules/.bin/jshint
-XYZ = node_modules/.bin/xyz --repo git@github.com:plaid/envvar.git
+XYZ = node_modules/.bin/xyz --repo git@github.com:finboxio/injectenv.git
 
 
 .PHONY: lint

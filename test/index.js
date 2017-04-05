@@ -202,6 +202,20 @@ describe('envvar.string', function() {
     eq(envvar.string('FOO'), 'quux');
   });
 
+  it('returns overridden', function() {
+    process.env.FOO = 'quux';
+    process.env.BAR = 'garf'
+    eq(envvar({ FOO: 'xyz' }).string('FOO'), 'xyz');
+    eq(envvar({ FOO: 'xyz' }).string('BAR'), 'garf');
+  });
+
+  it('can disable env merge', function() {
+    process.env.FOO = 'quux';
+    process.env.BAR = 'garf'
+    eq(envvar({ FOO: 'xyz' }, { merge: false }).string('FOO'), 'xyz');
+    eq(envvar({ FOO: 'xyz' }, { merge: false }).string('BAR', ''), '');
+  });
+
 });
 
 
